@@ -26,9 +26,13 @@ export const listTodo = async (
   res: Response
 ) => {
   try {
-    const { createdAt } = req.query;
+    const { createdAt, status } = req.query;
 
-    const list_todo = await Todo.find({ createdAt, user_id: req.user._id });
+    const list_todo = await Todo.find({
+      user_id: req.user._id,
+      status,
+      date: createdAt
+    });
 
     return res.json(list_todo.map(todo => todo.serialize()));
   } catch (error) {

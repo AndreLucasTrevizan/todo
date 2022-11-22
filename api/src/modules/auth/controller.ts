@@ -20,13 +20,15 @@ export const login = async (
 
     const exists_user = await User.findOne({ email });
 
+    console.log(exists_user);
+
     if (exists_user && exists_user.comparePassword(password)) {
-      const token = jwt.sign(exists_user.serialize(), String(SECRET), { expiresIn: '1h' });
+      const token = jwt.sign(exists_user.serialize(), String(SECRET));
 
       return res.json({...exists_user.serialize(), token});
     }
 
-    return res.json(404).json({ message: 'Email ou senha inválidos'});
+    return res.status(404).json({ message: 'Email ou senha inválidos'});
   } catch (error) {
     return res.status(500).json({ error });
   }
@@ -51,3 +53,13 @@ export const register = async (
   }
 };
 
+export const validateToken = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    res.json({ message: 'Ok' });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
