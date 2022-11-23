@@ -97,3 +97,13 @@ body {
 .image_todo {
   width: 100%;
 }
+
+@media (max-width: 600px) {
+  .panel {
+    display: flex;
+    flex-direction: column;
+    height: max-content !important;
+  }
+
+  
+}

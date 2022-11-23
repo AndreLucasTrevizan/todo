@@ -20,8 +20,6 @@ export const login = async (
 
     const exists_user = await User.findOne({ email });
 
-    console.log(exists_user);
-
     if (exists_user && exists_user.comparePassword(password)) {
       const token = jwt.sign(exists_user.serialize(), String(SECRET));
 
