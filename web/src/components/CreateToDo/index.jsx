@@ -54,6 +54,7 @@ export default function CreateToDo() {
         <form className='form' onSubmit={handleSubmit(handleCALLApi)}>
           <label className='form_label'>Descrição</label>
           <input
+            autoComplete='false'
             type="text"
             className='form_input'
             placeholder='Fazer compras'

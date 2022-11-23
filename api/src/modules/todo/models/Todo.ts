@@ -1,4 +1,6 @@
+import { ptBR } from 'date-fns/locale';
 import { Schema, model } from 'mongoose';
+import { format } from 'date-fns';
 import { SerializedTodo, StatusTodo, TodoType } from '../../../types/todo';
 
 const TodoSchema = new Schema<TodoType>({
@@ -14,7 +16,7 @@ const TodoSchema = new Schema<TodoType>({
   date: {
     type: String,
     required: true,
-    default: new Date(Date.now()).toISOString().substring(0, 10),
+    default: format(new Date(Date.now()), 'yyyy-MM-dd', { locale: ptBR }),
   },
   user_id: {
     type: Schema.Types.ObjectId,

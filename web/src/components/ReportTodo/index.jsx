@@ -7,11 +7,12 @@ import { api } from '../../service/api';
 import Loader from '../Loader';
 
 import './index.css';
+import { ptBR } from 'date-fns/locale';
 
 export default function ReportToDo() {
   const [date, setDate] = useState(new Date());
   const [filter, setFilter] = useState('in_progress');
-
+  
   const {
     signed
   } = useContext(AuthContext);
@@ -35,7 +36,7 @@ export default function ReportToDo() {
       headers,
       params: {
         status: filter,
-        createdAt: new Date(date).toISOString().substring(0, 10)
+        createdAt: format(date, 'yyyy-MM-dd', { locale: ptBR })
       }
     });
 

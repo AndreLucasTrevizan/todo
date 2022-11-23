@@ -46,12 +46,20 @@ export default function Todo({ data }) {
     deleteMutation.mutate(data._id, {
       onSuccess: () => {
         queryClient.invalidateQueries({ queryKey: ['todos'] })
+      },
+      onError: (err) => {
+        alert(err);
       }
     });
   }
 
   const handleUpdateTodo = () => {
-    updateMutation.mutate(description);
+    updateMutation.mutate(description, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['todos'] });
+        setUpdating(false);
+      }
+    });
   };
 
   return (
@@ -61,7 +69,7 @@ export default function Todo({ data }) {
           <input
             type="text"
             className='form_input'
-            value={data.description}
+            value={description}
             style={{ marginBottom: '3px' }}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -77,7 +85,7 @@ export default function Todo({ data }) {
         }</span>
       </div>
       <div className='todo_options'>
-        {updating && <button className='save_button'>
+        {updating && <button className='save_button' onClick={handleUpdateTodo}>
           <FiSave />
         </button>}
         {!updating && <button className='edit_button' onClick={isUpdating}>

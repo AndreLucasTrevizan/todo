@@ -39,3 +39,42 @@ export const listTodo = async (
     return res.status(500).json({ error });
   }
 };
+
+export const updateTodo = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { _id } = req.params;
+    const { description } = req.body;
+
+    await Todo.findOneAndUpdate({
+      _id,
+      user_id: req.user._id,
+    }, {
+      $set: { description },
+    });
+
+    return res.json({ message: 'Updated' });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
+
+export const deleteTodo = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { _id } = req.params;
+
+    await Todo.findOneAndDelete({
+      _id,
+      user_id: req.user._id,
+    });
+
+    return res.json({ message: 'Deleted' });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
