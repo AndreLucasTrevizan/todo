@@ -10,6 +10,15 @@
 
 .todo_info {
   display: flex;
+  align-items: center;
+}
+
+.todo_info input[type='checkbox'] {
+  margin-right: 1rem;
+}
+
+.info {
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
@@ -32,6 +41,24 @@
   text-align: center;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.ready {
+  display: flex;
+  align-items: center;
+}
+
+.ready span {
+  margin-right: 1rem;
+}
+
+.ready_button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #FFF;
+  background-color: #33cc33;
+  margin-right: 1rem;
 }
 
 .save_button {

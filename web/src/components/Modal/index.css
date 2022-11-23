@@ -1,0 +1,80 @@
+.modal {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modal_container {
+  z-index: 2;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.modal_header {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #111111;
+}
+
+.close_button {
+  border: none;
+  padding: 0.6rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close_button:hover {
+  cursor: pointer;
+}
+
+.close_button:active {
+  opacity: 0.2;
+}
+
+.modal_body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.message {
+  padding-bottom: 1rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.modal_actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal_actions button {
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.modal_actions button:hover {
+  cursor: pointer;
+}
+
+.modal_ok_action {
+  margin-right: 1rem;
+}
+
+.modal_deny_action {
+  background-color: #ff3333;
+  color: #FFF;
+}

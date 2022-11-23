@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { StatusTodo } from '../../types/todo';
 import { Todo } from './models/Todo';
 
 export const creatingTodo = async (
@@ -56,6 +57,22 @@ export const updateTodo = async (
     });
 
     return res.json({ message: 'Updated' });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+};
+
+export const readyTodo = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    await Todo.findOneAndUpdate({
+      _id: req.params._id,
+      user_id: req.user._id,
+    }, { $set: { status: StatusTodo.DONE } });
+
+    return res.json({ message: 'Todo Ready' });
   } catch (error) {
     return res.status(500).json({ error });
   }

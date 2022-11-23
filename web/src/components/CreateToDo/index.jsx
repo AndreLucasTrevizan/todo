@@ -51,18 +51,21 @@ export default function CreateToDo() {
       {mutation.isLoading ? (
         <Loader />
       ) : (
-        <form className='form' onSubmit={handleSubmit(handleCALLApi)}>
-          <label className='form_label'>Descrição</label>
-          <input
-            autoComplete='false'
-            type="text"
-            className='form_input'
-            placeholder='Fazer compras'
-            {...register('description')}
-          />
-          {errors.description && <span className='field_error_message'>{errors.description.message}</span>}
-          <button className='button' style={{ width: 'max-content' }}>Criar To do</button>
-        </form>
+        <>
+          <form className='form' onSubmit={handleSubmit(handleCALLApi)}>
+            <label className='form_label'>Descrição</label>
+            <input
+              autoComplete='false'
+              type="text"
+              className='form_input'
+              placeholder='Fazer compras'
+              {...register('description')}
+            />
+            {errors.description && <span className='field_error_message'>{errors.description.message}</span>}
+            <button className='button' style={{ width: 'max-content' }}>Criar To do</button>
+          </form>
+          <img src={require('../../assets/todo.jpg')} className='image_todo' />
+        </>
       )}
     </div>
   )
