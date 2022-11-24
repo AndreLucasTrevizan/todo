@@ -9,7 +9,7 @@ export default function Home() {
     <div className='dashboard'>
       <div className='panel'>
         <CreateToDo />
-        <ReportToDo />
+        <ReportToDo  />
       </div>
     </div>
   );

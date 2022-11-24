@@ -89,7 +89,11 @@ export default function Todo({ data }) {
     <div className='todo'>
       {visibleModal &&
         <Modal
-          message={`Deseja mesmo excluir "${data.description}"?`}
+          message={
+            deleteMutation.isLoading ?
+              'Deletando...' :
+              `Deseja mesmo excluir "${data.description}"?`
+          }
           handleShowModal={handleShowModal}
           mainAction={handleDeleteTodo}
         />
@@ -97,7 +101,7 @@ export default function Todo({ data }) {
       <div className='todo_info'>
         {data.status !== 'done' && <input type="checkbox" checked={ready} onChange={handleReadyTodo} />}
         <div className='info'>
-          {updating &&
+          {(updating && !updateMutation.isLoading) &&
             <input
               type="text"
               className='form_input'
@@ -106,6 +110,7 @@ export default function Todo({ data }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           }
+          {updateMutation.isLoading && <span className='description'>Editando...</span>}
           {description === '' && <span className='field_error_message'>A descrição é obrigatória</span>}
           {!updating && <span className='description'>{data.description}</span>}
           <span className='time'>{

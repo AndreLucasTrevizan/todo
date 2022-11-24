@@ -11,4 +11,3 @@ export function handleRegister({ name, email, password }) {
 export function handleLogin({ email, password }) {
   return api.post('/auth/login', { email, password });
 }
-
