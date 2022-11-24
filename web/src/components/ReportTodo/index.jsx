@@ -12,7 +12,7 @@ import { ptBR } from 'date-fns/locale';
 export default function ReportToDo() {
   const [date, setDate] = useState(new Date());
   const [filter, setFilter] = useState('in_progress');
-  
+
   const {
     signed
   } = useContext(AuthContext);
@@ -36,7 +36,7 @@ export default function ReportToDo() {
       headers,
       params: {
         status: filter,
-        createdAt: format(date, 'yyyy-MM-dd', { locale: ptBR })
+        createdAt: format(date, 'dd/MM/yyyy', { locale: ptBR })
       }
     });
 
@@ -61,7 +61,7 @@ export default function ReportToDo() {
     <div className='todo_list_report'>
       <div className='filter_date'>
         <button className='button' onClick={handlePreviousDay}>&lt;</button>
-        <h1>{format(date, 'dd/MM/yyyy')}</h1>
+        <h1>{format(date, 'dd/MM/yyyy', { locale: ptBR })}</h1>
         <button className='button' onClick={handleNextDay}>&gt;</button>
       </div>
       <div className='filter_status'>
@@ -88,6 +88,12 @@ export default function ReportToDo() {
           />
         </div>
       </div>
+      {(data?.length === 0 && filter === 'done') && (
+        <div className='text'><span>Você ainda não concluiu nenhuma tarefa.</span></div>
+      )}
+      {(data?.length === 0 && filter === 'in_progress') && (
+        <div className='text'><span>Você ainda não possui tarefas para essa data.</span></div>
+      )}
       {isLoading && (
         <div className='loader_place'>
           <Loader />

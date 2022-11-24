@@ -97,3 +97,47 @@ body {
 .image_todo {
   width: 100%;
 }
+
+.text {
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+@media (max-width: 850px) {
+  .dashboard {
+    height: auto !important;
+  }
+
+  .todo_list_today h1 {
+    text-align: center;
+  }
+
+  .todo_list_today {
+    border-bottom: 1px solid #E1E1E1;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    height: auto !important;
+  }
+
+  .todo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .todo_info {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .modal_container {
+    width: 80% !important;
+  }
+
+  .form {
+    width: 80%;
+  }
+}

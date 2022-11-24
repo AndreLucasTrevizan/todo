@@ -8,6 +8,7 @@ import ptBr from 'date-fns/locale/pt-BR';
 import { api } from '../../service/api';
 import { AuthContext } from '../../contexts/AuthContext';
 import Modal from '../Modal';
+import Loader from '../Loader';
 
 export default function Todo({ data }) {
   const [updating, setUpdating] = useState(false);
@@ -88,7 +89,7 @@ export default function Todo({ data }) {
     <div className='todo'>
       {visibleModal &&
         <Modal
-          message={'Deseja mesmo excluir?'}
+          message={`Deseja mesmo excluir "${data.description}"?`}
           handleShowModal={handleShowModal}
           mainAction={handleDeleteTodo}
         />
@@ -119,8 +120,14 @@ export default function Todo({ data }) {
       <div className='todo_options'>
         {(ready && data.status !== 'done') && (
           <div className='ready'>
-            <span>Pronta?</span>
-            <button className='ready_button' onClick={() => handleChangeToReady()}><FiCheck /></button>
+            {readyMutation.isLoading && <Loader />}
+            {!readyMutation.isLoading && (
+              <>
+                <span>Pronta?</span>
+                <button className='ready_button' onClick={() => handleChangeToReady()}><FiCheck /></button>
+              </>
+            )
+            }
           </div>
         )}
         {updating && <button className='save_button' onClick={handleUpdateTodo}>

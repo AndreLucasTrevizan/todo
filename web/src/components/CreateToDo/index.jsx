@@ -7,6 +7,8 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../service/api';
 import Loader from '../Loader';
 
+import './index.css';
+
 export default function CreateToDo() {
 
   const queryClient = useQueryClient();
