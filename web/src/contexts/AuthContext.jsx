@@ -1,6 +1,12 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
 export const AuthContext = createContext({});
+
+export const useDate = () => {
+  const { filterDate, handleFilterDate } = useContext(AuthContext);
+
+  return { filterDate, handleFilterDate };
+};
 
 export default function AuthProvider({ children }) {
   const [signed, setSigned] = useState(null);
@@ -19,8 +25,8 @@ export default function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{
+      setSigned,
       signed,
-      setSigned
     }}>
       {children}
     </AuthContext.Provider>
