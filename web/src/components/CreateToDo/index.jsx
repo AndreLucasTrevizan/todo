@@ -66,7 +66,7 @@ export default function CreateToDo() {
             {errors.description && <span className='field_error_message'>{errors.description.message}</span>}
             <button className='button' style={{ width: 'max-content' }}>Criar To do</button>
           </form>
-          <img src={require('../../assets/todo.jpg')} className='image_todo' />
+          <img src={require('../../assets/todo.jpg')} className='image_todo' alt='Todo list' />
         </>
       )}
     </div>

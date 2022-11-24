@@ -3,7 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.7);
+=======
+  background-color: rgba(0, 0, 0, 0.4);
+>>>>>>> a06fa864351edc4b92f63b8fb1ab4e833ee213c9
   z-index: 1;
   position: fixed;
   top: 0;

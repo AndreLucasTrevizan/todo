@@ -98,6 +98,7 @@ body {
   width: 100%;
 }
 
+<<<<<<< HEAD
 .text {
   text-align: center;
   width: 100%;
@@ -140,4 +141,14 @@ body {
   .form {
     width: 80%;
   }
+=======
+@media (max-width: 600px) {
+  .panel {
+    display: flex;
+    flex-direction: column;
+    height: max-content !important;
+  }
+
+  
+>>>>>>> a06fa864351edc4b92f63b8fb1ab4e833ee213c9
 }
