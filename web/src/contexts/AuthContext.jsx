@@ -1,15 +1,10 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 
 export const AuthContext = createContext({});
 
-export const useDate = () => {
-  const { filterDate, handleFilterDate } = useContext(AuthContext);
-
-  return { filterDate, handleFilterDate };
-};
-
 export default function AuthProvider({ children }) {
   const [signed, setSigned] = useState(null);
+  const [dateFilter, setDateFilter] = useState();
 
   useEffect(() => {
     function checkSigned() {
@@ -27,6 +22,8 @@ export default function AuthProvider({ children }) {
     <AuthContext.Provider value={{
       setSigned,
       signed,
+      dateFilter,
+      setDateFilter
     }}>
       {children}
     </AuthContext.Provider>

@@ -14,17 +14,20 @@ export default function ReportToDo() {
   const [filter, setFilter] = useState('in_progress');
 
   const {
-    signed
+    signed,
+    setDateFilter
   } = useContext(AuthContext);
 
   const handleNextDay = () => {
     let new_date = addDays(date, 1);
     setDate(new_date);
+    setDateFilter(new_date);
   };
 
   const handlePreviousDay = () => {
     let new_date = subDays(date, 1);
     setDate(new_date);
+    setDateFilter(new_date);
   };
 
   const headers = {
@@ -36,7 +39,7 @@ export default function ReportToDo() {
       headers,
       params: {
         status: filter,
-        createdAt: format(date, 'dd/MM/yyyy', { locale: ptBR })
+        createdAt: format(date, 'P', { locale: ptBR })
       }
     });
 

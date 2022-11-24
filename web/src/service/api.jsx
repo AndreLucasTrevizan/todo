@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://todolistprod.herokuapp.com',
+  baseURL: 'https://poc-todo-list.onrender.com',
 });
 
 export function handleRegister({ name, email, password }) {

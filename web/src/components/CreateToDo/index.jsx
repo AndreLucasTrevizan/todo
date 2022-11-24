@@ -14,7 +14,8 @@ export default function CreateToDo() {
   const queryClient = useQueryClient();
 
   const {
-    signed
+    signed,
+    dateFilter
   } = useContext(AuthContext);
 
   const headers = {
@@ -34,6 +35,8 @@ export default function CreateToDo() {
   }
 
   const mutation = useMutation(handleCreateTodo);
+
+  console.log(dateFilter, new Date());
 
   const handleCALLApi = (data) => {
     mutation.mutate(data, {
