@@ -76,6 +76,8 @@ export default function Login() {
               </div>
             }
             <div className='form_options'>
+              <Link to='/recover-password'>Esqueceu sua senha?</Link>
+              <div style={{ width: '100%', borderTop: '1px solid black', marginTop: '1rem' }}></div>
               <span>Ainda não possui uma conta?</span>
               <Link to='/register'>Criar conta</Link>
             </div>
